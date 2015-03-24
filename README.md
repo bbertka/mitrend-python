@@ -8,7 +8,6 @@ Currently only a standard web interface is provided by MiTrend, and an API that 
 - A microservice is being prepared to handle MiTrend assessment requests, so this module can easily fit in with a Web app such as Flask.
 
 ## Installation
-How do install your software to make it work? Do i just download the scripts? Do i download them from a central repository. This section should give readers a spoon-fed way of understanding how do i get to step 1. Make sure you recognize multiple deployment scenarios as well if it it integrates with things like Vagrant or Docker.
 To install just clone from git and run the setup.py script:
 ```
 sudo python setup.py install
