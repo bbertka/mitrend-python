@@ -2,6 +2,8 @@ mitrend-python
 ======================
 This is a python module for the [MiTrend](http://mitrend.com) performance analysis tool that submits assessments on behalf of an authenticated user.  It exposes the REST API made publicly available by [MiTrend](http://mitrend.com/).
 
+See a live demo via a Web2Py app: [https://mitrend.cfapps.io](https://mitrend.cfapps.io)
+
 ## Description
 Currently only a standard web interface is provided by [MiTrend](http://mitrend.com), and an API that takes well formed JSON requests. The problem with the API is that it requires multiple steps to submit a request. Specifically using the REST API, a program would have to send a request to create an assessment, then send a subsequent request to add files. Finally, a program would have to send a request to submit the assessment for analysis. The problem is that for Python code, having to submit multiple REST API requests without a library is cumbersome. This module wrapps the JSON API in an easy to use pyton module. The following use cases are supported by this module.
 - Automation is desired and a Python tool chain is required, hence this module makes it easy to include [MiTrend](http://mitrend.com) functionality.
