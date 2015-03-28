@@ -22,7 +22,7 @@ class Mitrend:
 		self.job_id = None
 		self.submission = {}
 
-	def create_submission(self):
+	def create(self):
 		""" Creates the initial submission """
 		data = { 'company': self.company, 
 			'assessment_name': self.assessment_name,
@@ -40,9 +40,11 @@ class Mitrend:
 		self.job_id = json.loads(r.content)['id']
 		return True
 
-	def add_files(self):
+	def add(self, files=[]):
                 """ Loop through the files and add to the job """
 		headers = {'Content-Type': 'application/json'}
+		self.files.extend(files)
+		print self.files
                 for furl in self.files:
                         file_data = {'device_type': self.device_type, 'ftp_url':furl}
                         url = "https://app.mitrend.com/api/assessments/%s/files" % self.job_id
@@ -64,6 +66,7 @@ class Mitrend:
 if __name__=="__main__":
 	""" Creates a new MiTrend submission """
 	try:
+		# Add files during object instantiation if already known
 		M = Mitrend(username='', password='', 
 			company='',
 			assessment_name='', 
@@ -74,10 +77,15 @@ if __name__=="__main__":
 			tags=['', ''], 
 			attributes={'source':'mitrend-python'},
 			device_type='',
-			files=[''] )
+			files=[] )
 
-		M.create_submission()
-		M.add_files()
+		# Post a create assessment request
+		M.create()
+
+		# Post any new files
+		M.add(files=[])
+
+		# Submit for final assessment
 		M.submit()
 
         except Exception as e:
