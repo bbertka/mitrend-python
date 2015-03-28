@@ -44,7 +44,6 @@ class Mitrend:
                 """ Loop through the files and add to the job """
 		headers = {'Content-Type': 'application/json'}
 		self.files.extend(files)
-		print self.files
                 for furl in self.files:
                         file_data = {'device_type': self.device_type, 'ftp_url':furl}
                         url = "https://app.mitrend.com/api/assessments/%s/files" % self.job_id
